@@ -1,6 +1,5 @@
 package org.superbiz.moviefun.albums;
 
-import org.apache.tika.Tika;
 import org.apache.tika.io.IOUtils;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -11,19 +10,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.superbiz.moviefun.blobstore.Blob;
 import org.superbiz.moviefun.blobstore.BlobStore;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Optional;
 
-import static java.lang.ClassLoader.getSystemResource;
 import static java.lang.String.format;
-import static java.nio.file.Files.readAllBytes;
 import static org.springframework.util.MimeTypeUtils.IMAGE_JPEG_VALUE;
 
 @Controller
@@ -92,7 +85,7 @@ public class AlbumsController {
 
     private Blob buildDefaultCoverBlob() {
         ClassLoader classLoader = getClass().getClassLoader();
-        InputStream input = classLoader.getResourceAsStream("default-cover.jpg");
+        InputStream input = classLoader.getResourceAsStream("default-cover-2.jpg");
 
         return new Blob("default-cover", input, IMAGE_JPEG_VALUE);
     }
